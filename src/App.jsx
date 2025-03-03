@@ -10,12 +10,27 @@ import {
 } from "./redux/counter/counterSlice";
 import styles from './styles/Counter.module.css';
 
+// () => { }
+  //const App = () => { }
 export default function App() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
+
+  // function myFunction() {
+  //   console.log("run my function") 
+  // }
+
+  // myFunction();
+
+  const myFunction = () => {
+    console.log("run my arrow function");
+    
+  }
+
+  myFunction();
 
   return (
     <div>
