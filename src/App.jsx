@@ -10,8 +10,7 @@ import {
 } from "./redux/counter/counterSlice";
 import styles from './styles/Counter.module.css';
 
-// () => { }
-  //const App = () => { }
+
 export default function App() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
@@ -19,22 +18,20 @@ export default function App() {
 
   const incrementValue = Number(incrementAmount) || 0;
 
-  // function myFunction() {
-  //   console.log("run my function") 
-  // }
-
-  // myFunction();
-
-  const myFunction = () => {
-    console.log("run my arrow function");
-    
+  //() => { }
+  //component = html + css + js
+  const MyComponent = () => {
+    return (
+      <div>Phan Thành Phước</div>
+    );
   }
 
-  myFunction();
+  
 
   return (
     <div>
       <h1>Hello Word</h1>
+      <MyComponent/>
       <div className={styles.row}>
         <button
           className={styles.button}
