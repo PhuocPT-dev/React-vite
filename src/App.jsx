@@ -9,6 +9,8 @@ import {
   selectCount,
 } from "./redux/counter/counterSlice";
 import styles from './styles/Counter.module.css';
+import MyComponent from './components/learn/MyComponent';
+import { SecondComponent, ThirdComponent } from './components/learn/SecondComponent';
 
 
 export default function App() {
@@ -18,20 +20,14 @@ export default function App() {
 
   const incrementValue = Number(incrementAmount) || 0;
 
-  //() => { }
-  //component = html + css + js
-  const MyComponent = () => {
-    return (
-      <div>Phan Thành Phước</div>
-    );
-  }
-
   
 
   return (
     <div>
       <h1>Hello Word</h1>
       <MyComponent/>
+      <SecondComponent/>
+      <ThirdComponent/>
       <div className={styles.row}>
         <button
           className={styles.button}
