@@ -1,0 +1,53 @@
+
+.todo-title{
+    color:  rgb(230, 65, 20);
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+    
+}
+
+input{
+    margin-right: 10px;
+}
+
+.todo-new {
+    text-align: center;
+}
+
+.todo-text{
+    max-width: 300px;
+    margin: 0 auto;
+    border: 1px solid #000;
+    margin-top: 10px;
+    padding: 10px;
+    
+}
+
+.todo-image{
+    text-align: center;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter, transform;
+    transition: filter 300ms;
+    animation: logo-spin infinite 20s linear;
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.logo:hover {
+    animation: logo-spin 2s linear infinite;
+}
+
+
+

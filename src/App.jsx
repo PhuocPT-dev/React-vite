@@ -1,76 +1,31 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-} from "./redux/counter/counterSlice";
-import styles from './styles/Counter.module.css';
-import MyComponent from './components/learn/MyComponent';
-import { SecondComponent, ThirdComponent } from './components/learn/SecondComponent';
+import './components/todo/todo.css';
+import TodoData from './components/todo/TodoData';
+import TodoNew from './components/todo/TodoNew';
+import reactLogo from './assets/react.svg';
 
+const App = () => {
 
-export default function App() {
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  const hoidanit = "Eric MU";
+  const age = 25;
+  const data = {
+    address : "hanoi",
+    country: "vietnam"
+  }
 
-  const incrementValue = Number(incrementAmount) || 0;
-
-  
-
+  //(key:value)
   return (
-    <div>
-      <h1>Hello Word</h1>
-      <MyComponent/>
-      <SecondComponent/>
-      <ThirdComponent/>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
-        />
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
-        >
-          Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
-          Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
-          Add If Odd
-        </button>
+    <div className="todo-container">
+      <div className="todo-title">Todo List</div>
+      <TodoNew/>
+      <TodoData
+        name = {hoidanit}
+        age = {age}
+        data = {data}
+      />
+      <div className='todo-image'>
+        <img src={reactLogo} className='logo' alt="React Logo" />
       </div>
     </div>
-  );
+  )
 }
+export default App;
