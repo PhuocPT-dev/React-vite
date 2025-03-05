@@ -8,7 +8,7 @@ const TodoNew = (props) => {
     const { addNewTodo } = props
 
     const handleClick = (name) => {
-        console.log(">>> check valueInput : ",valueInput);
+        addNewTodo(valueInput)
 
     }
     //cách 1
