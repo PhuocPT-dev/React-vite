@@ -11,12 +11,7 @@ const App = () => {
     // { id: 2, name: "Watching Youtube" },
   ])
 
-  const hoidanit = "Eric MU";
-  const age = 25;
-  const data = {
-    address: "hanoi",
-    country: "vietnam"
-  }
+
 
   const addNewTodo = (name) => {
     const newTodo = {
@@ -37,16 +32,28 @@ const App = () => {
       <div className="todo-title">Todo List</div>
       <TodoNew
         addNewTodo={addNewTodo} />
-      <TodoData
-        name={hoidanit}
-        age={age}
-        data={data}
-        todoList={todoList}
 
-      />
-      <div className='todo-image'>
-        <img src={reactLogo} className='logo' alt="React Logo" />
-      </div>
+      {/* {todoList.length > 0 &&
+        <TodoData
+          todoList={todoList}
+        />
+      }
+      {todoList.length === 0 &&
+        <div className='todo-image'>
+          <img src={reactLogo} className='logo' alt="React Logo" />
+        </div>
+      } */}
+
+      {todoList.length > 0 ?
+        <TodoData
+          todoList={todoList}
+        />
+        :
+        <div className='todo-image'>
+          <img src={reactLogo} className='logo' alt="React Logo" />
+        </div>
+      }
+
     </div>
   )
 }
