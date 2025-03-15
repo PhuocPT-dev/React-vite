@@ -25,6 +25,19 @@ const updateUserAPI = () => {
 
 }
 
+const fetchAllUserAPI = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    const URL_BACKEND = "/api/v1/user";
+
+    
+    return axios.get(URL_BACKEND, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 export {
-    createUserAPI, updateUserAPI
+    createUserAPI, updateUserAPI, fetchAllUserAPI
 }
