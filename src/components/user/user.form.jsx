@@ -40,8 +40,8 @@ const UserForm = (props) => {
     const resetAndCloseModal = () => {
         setIsModalOpen(false);
         setFullName("");
+        setPassword("");
         setEmail("");
-        setPhone("");
         setPhone("");
     }
 
