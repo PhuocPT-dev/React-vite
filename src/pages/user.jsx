@@ -11,8 +11,8 @@ const UsersPage = () => {
     useEffect(() => {
         console.log(">> run useEffect 111");
         loadUser();
-        
-    },[])
+
+    }, [])
 
     const loadUser = async () => {
         const res = await fetchAllUserAPI()
@@ -21,9 +21,11 @@ const UsersPage = () => {
     // lift-up state
 
     return (
-        <div style={{padding: "20px"}}>
-            <UserForm loadUser={loadUser}/>
-            <UserTable dataUser={dataUser}/>
+        <div style={{ padding: "20px" }}>
+            <UserForm loadUser={loadUser} />
+            <UserTable
+                loadUser={loadUser}
+                dataUser={dataUser} />
         </div>
     )
 }

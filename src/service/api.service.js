@@ -21,8 +21,22 @@ const createUserAPI = (fullName, email, password, phone) => {
 };
 
 
-const updateUserAPI = () => {
+const updateUserAPI = (_id, fullName, phone) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const URL_BACKEND = "/api/v1/user";
 
+    const data = {
+        _id: _id,
+        fullName: fullName,
+        phone: phone
+    };
+
+    return axios.put(URL_BACKEND, data, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
 }
 
 const fetchAllUserAPI = () => {
