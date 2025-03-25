@@ -52,6 +52,19 @@ const fetchAllUserAPI = () => {
     })
 }
 
+const deleteUserAPI = (id) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const URL_BACKEND = `/api/v1/user/${id}`; // backtick
+
+    
+    return axios.delete(URL_BACKEND, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 export {
-    createUserAPI, updateUserAPI, fetchAllUserAPI
+    createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI
 }
