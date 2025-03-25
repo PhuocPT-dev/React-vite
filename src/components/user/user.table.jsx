@@ -2,6 +2,7 @@ import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { Space, Table, Tag } from 'antd';
 import UpdateUserModal from './update.user.modal';
 import { useState } from 'react';
+import ViewUserDetail from './view.user.detail';
 
 const UserTable = (props) => {
     const { dataUser, loadUser } = props;
@@ -10,13 +11,24 @@ const UserTable = (props) => {
 
     const [dataUpdate, setDataUpdate] = useState(null);
 
+    const [dataDetail, setDataDetail] = useState(null);
+
+    const [isDetailOpen, setIsDetailOpen] = useState(false);
+
     const columns = [
         {
             title: 'Id',
             dataIndex: '_id',
             render: (_, record) => {
                 return (
-                    <a href='#'>{record._id}</a>
+                    <a href='#'
+                    onClick={() => {
+                        setDataDetail(record);
+                        console.log(">>> check :", record);
+                        
+                        setIsDetailOpen(true);
+                    }}
+                    >{record._id}</a>
                 )
             }
 
@@ -35,13 +47,13 @@ const UserTable = (props) => {
             key: 'action',
             render: (_, record) => (
                 <div style={{ display: "flex", gap: "20px" }}>
-                    <EditOutlined 
-                    onClick={() => {
-                        // console.log(">>> check record:", record);
-                        setDataUpdate(record)
-                        setIsModalUpdateOpen(true)
-                    }}
-                    style={{ cursor: "pointer", color: "orange" }} />
+                    <EditOutlined
+                        onClick={() => {
+                            // console.log(">>> check record:", record);
+                            setDataUpdate(record)
+                            setIsModalUpdateOpen(true)
+                        }}
+                        style={{ cursor: "pointer", color: "orange" }} />
                     <DeleteOutlined style={{ cursor: "pointer", color: "red" }} />
 
                 </div>
@@ -52,7 +64,7 @@ const UserTable = (props) => {
     ];
 
 
- 
+
 
 
     return (
@@ -60,12 +72,18 @@ const UserTable = (props) => {
             <Table columns={columns}
                 dataSource={dataUser}
                 rowKey={"_id"} />
-            <UpdateUserModal 
-            isModalUpdateOpen = {isModalUpdateOpen}
-            setIsModalUpdateOpen = {setIsModalUpdateOpen}
-            dataUpdate = {dataUpdate}
-            setDataUpdate = {setDataUpdate}
-            loadUser = {loadUser}
+            <UpdateUserModal
+                isModalUpdateOpen={isModalUpdateOpen}
+                setIsModalUpdateOpen={setIsModalUpdateOpen}
+                dataUpdate={dataUpdate}
+                setDataUpdate={setDataUpdate}
+                loadUser={loadUser}
+            />
+            <ViewUserDetail
+                dataDetail={dataDetail}
+                setDataDetail={setDataDetail}
+                isDetailOpen={isDetailOpen}
+                setIsDetailOpen={setIsDetailOpen}
             />
         </>
 
