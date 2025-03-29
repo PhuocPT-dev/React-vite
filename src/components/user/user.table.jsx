@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { notification, Popconfirm, Table,  } from 'antd';
+import { notification, Popconfirm, Table, } from 'antd';
 import UpdateUserModal from './update.user.modal';
 import { useState } from 'react';
 import ViewUserDetail from './view.user.detail';
@@ -18,6 +18,21 @@ const UserTable = (props) => {
     const [isDetailOpen, setIsDetailOpen] = useState(false);
 
     const columns = [
+        {
+            title: "STT",
+            render: (_, record) => {
+                return (
+                    <a href='#'
+                        onClick={() => {
+                            setDataDetail(record);
+                            console.log(">>> check :", record);
+
+                            setIsDetailOpen(true);
+                        }}
+                    >{record._id}</a>
+                )
+            }
+        },
         {
             title: 'Id',
             dataIndex: '_id',
@@ -111,7 +126,7 @@ const UserTable = (props) => {
                 setDataDetail={setDataDetail}
                 isDetailOpen={isDetailOpen}
                 setIsDetailOpen={setIsDetailOpen}
-                loadUser = {loadUser}
+                loadUser={loadUser}
             />
         </>
 
