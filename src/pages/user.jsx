@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 const UsersPage = () => {
 
     const [dataUser, setDateUser] = useState([]);
+    const [current, setCurrent] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
+    const [total, setTotal] = useState(0);
 
     //empty array => run once
     useEffect(() => {
@@ -15,8 +18,14 @@ const UsersPage = () => {
     }, [])
 
     const loadUser = async () => {
-        const res = await fetchAllUserAPI()
-        setDateUser(res.data)
+        const res = await fetchAllUserAPI(current, pageSize)
+        if (res.data) {
+            setDateUser(res.data.result);
+            setCurrent(res.data.meta.current);
+            setPageSize(res.data.meta.pageSize);
+            setTotal(res.data.meta.total)
+
+        }
     }
     // lift-up state
 
@@ -25,7 +34,13 @@ const UsersPage = () => {
             <UserForm loadUser={loadUser} />
             <UserTable
                 loadUser={loadUser}
-                dataUser={dataUser} />
+                dataUser={dataUser}
+                current={current}
+                pageSize={pageSize}
+                total={total} 
+                setCurrent={setCurrent}
+                setPageSize={setCurrent}
+                />
         </div>
     )
 }

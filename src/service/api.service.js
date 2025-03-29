@@ -39,9 +39,9 @@ const updateUserAPI = (_id, fullName, phone) => {
     })
 }
 
-const fetchAllUserAPI = () => {
+const fetchAllUserAPI = (current, pageSize) => {
     const accessToken = localStorage.getItem("accessToken");
-    const URL_BACKEND = "/api/v1/user?current=1&pageSize=1";
+    const URL_BACKEND = `/api/v1/user?current=${current}&pageSize=${pageSize}`;
 
     
     return axios.get(URL_BACKEND, {
