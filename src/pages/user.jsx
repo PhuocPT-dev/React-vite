@@ -11,11 +11,10 @@ const UsersPage = () => {
     const [total, setTotal] = useState(0);
 
     //empty array => run once
+    //not empty => next value != prev value(diều kiện)
     useEffect(() => {
-        console.log(">> run useEffect 111");
         loadUser();
-
-    }, [])
+    }, [current, pageSize]); // []  + condition(diều kiện) (mảng rộng + điều kiện)
 
     const loadUser = async () => {
         const res = await fetchAllUserAPI(current, pageSize)
@@ -27,6 +26,9 @@ const UsersPage = () => {
 
         }
     }
+    console.log(">>> check current", current);
+    console.log(">>> check pageSize", pageSize);
+    
     // lift-up state
 
     return (
@@ -39,7 +41,7 @@ const UsersPage = () => {
                 pageSize={pageSize}
                 total={total} 
                 setCurrent={setCurrent}
-                setPageSize={setCurrent}
+                setPageSize={setPageSize}
                 />
         </div>
     )
