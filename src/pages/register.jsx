@@ -1,4 +1,4 @@
-import { Button, Form, Input, notification, } from "antd";
+import { Button, Form, Input, notification, Row, Col } from "antd";
 import { registerUserAPI } from "../service/api.service";
 import { useNavigate } from "react-router-dom";
 
@@ -36,14 +36,11 @@ const RegisterPage = () => {
             form={form}
             layout="vertical"
             onFinish={onFinish}
+            style={{ margin: "10px" }}
         // onFinishFailed={onFinishFailed}
         >
-            <div>
-                <div style={{
-                    margin: "50px",
-                    // display: "flex",
-                    // flexDirection: "column"
-                }}>
+            <Row justify={"center"}>
+                <Col xs={24} md={6}>
                     <Form.Item
                         label="Full Name"
                         name="fullName"
@@ -55,6 +52,11 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
+
+            <Row justify={"center"}>
+                <Col xs={24} md={6}>
                     <Form.Item
                         label="Email"
                         name="email"
@@ -66,6 +68,11 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
+
+            <Row justify={"center"}>
+                <Col xs={24} md={6}>
                     <Form.Item
                         label="Password"
                         name="password"
@@ -77,6 +84,11 @@ const RegisterPage = () => {
                     >
                         <Input.Password />
                     </Form.Item>
+                </Col>
+            </Row>
+
+            <Row justify={"center"}>
+                <Col xs={24} md={6}>
                     <Form.Item
                         label="Phone number"
                         name="phone"
@@ -89,13 +101,16 @@ const RegisterPage = () => {
                     >
                         <Input />
                     </Form.Item>
+                </Col>
+            </Row>
+            {/* <button type="submit">Register</button>  thay nút bên dưới*/}
 
-                    {/* <button type="submit">Register</button>  thay nút bên dưới*/}
-
+            <Row justify={"center"}>
+                <Col xs={24} md={6}>
                     <div>
                         <Button onClick={() => form.submit()} type="primary">Register</Button>
 
-                        
+
                         {/* <Button onClick={() => {
                             form.setFieldsValue({
                                 email:"hoidanit@gmail.com",
@@ -105,8 +120,9 @@ const RegisterPage = () => {
                            
                         }}>Test</Button> */}
                     </div>
-                </div>
-            </div>
+                </Col>
+            </Row>
+
         </Form>
     )
 }
