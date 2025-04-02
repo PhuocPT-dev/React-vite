@@ -121,8 +121,26 @@ const registerUserAPI = (fullName, email, password, phone) => {
     })
 };
 
+const loginAPI = (email, password) => {
+    const accessToken = localStorage.getItem("accessToken");
+    const URL_BACKEND = "/api/v1/auth/login";
+
+    const data = {
+        username: email,
+        password: password,
+        delay: 2000
+    };
+
+    return axios.post(URL_BACKEND, data, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+};
+
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
-    handleUploadFile, updateUserAvatarAPI, registerUserAPI
+    handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI
 
 }
