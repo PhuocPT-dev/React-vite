@@ -2,7 +2,7 @@
 import axios from "./axios.customize";
 
 const createUserAPI = (fullName, email, password, phone) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/user";
 
     const data = {
@@ -22,7 +22,7 @@ const createUserAPI = (fullName, email, password, phone) => {
 
 
 const updateUserAPI = (_id, fullName, phone) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/user";
 
     const data = {
@@ -40,7 +40,7 @@ const updateUserAPI = (_id, fullName, phone) => {
 }
 
 const fetchAllUserAPI = (current, pageSize) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = `/api/v1/user?current=${current}&pageSize=${pageSize}`;
 
     
@@ -53,7 +53,7 @@ const fetchAllUserAPI = (current, pageSize) => {
 }
 
 const deleteUserAPI = (id) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = `/api/v1/user/${id}`; // backtick
 
     
@@ -66,7 +66,7 @@ const deleteUserAPI = (id) => {
 }
 
 const handleUploadFile = (file, folder) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = `/api/v1/file/upload`;
 
     let config = {
@@ -84,7 +84,7 @@ const handleUploadFile = (file, folder) => {
 };
 
 const updateUserAvatarAPI = (avatar ,_id, fullName, phone) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/user";
 
     const data = {
@@ -103,7 +103,7 @@ const updateUserAvatarAPI = (avatar ,_id, fullName, phone) => {
 }
 
 const registerUserAPI = (fullName, email, password, phone) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/user/register";
 
     const data = {
@@ -122,7 +122,7 @@ const registerUserAPI = (fullName, email, password, phone) => {
 };
 
 const loginAPI = (email, password) => {
-    const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/auth/login";
 
     const data = {
@@ -138,9 +138,15 @@ const loginAPI = (email, password) => {
         }
     })
 };
+const getAccountAPI = (email, password) => {
+    // const accessToken = localStorage.getItem("access_token");
+    const URL_BACKEND = "/api/v1/auth/account";
+    return axios.get(URL_BACKEND)
+};
 
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
-    handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI
+    handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI,
+    getAccountAPI
 
 }
