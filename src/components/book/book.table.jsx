@@ -2,6 +2,8 @@ import { Button, Popconfirm, Table } from "antd";
 import { useEffect, useState } from "react";
 import { fetchAllBookAPI } from "../../service/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import BookDetail from "./book.detail";
+
 
 const BookTable = () => {
 
@@ -9,6 +11,9 @@ const BookTable = () => {
     const [current, setCurrent] = useState(1);
     const [pageSize, setPageSize] = useState(5);
     const [total, setTotal] = useState(0);
+    // xem chi tiet book
+    const [dataDetail, setDataDetail] = useState(null);
+    const [isDetailOpen, setIsDetailOpen] = useState(false);
 
 
     useEffect(() => {
@@ -153,6 +158,12 @@ const BookTable = () => {
                         showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
                     }}
                 onChange={onChange}
+            />
+            <BookDetail
+                dataDetail={dataDetail}
+                setDataDetail={setDataDetail}
+                isDetailOpen={isDetailOpen}
+                setIsDetailOpen={setIsDetailOpen}
             />
         </>
     )
