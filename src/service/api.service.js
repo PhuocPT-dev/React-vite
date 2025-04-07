@@ -138,15 +138,21 @@ const loginAPI = (email, password) => {
         }
     })
 };
-const getAccountAPI = (email, password) => {
+const getAccountAPI = () => {
     // const accessToken = localStorage.getItem("access_token");
     const URL_BACKEND = "/api/v1/auth/account";
     return axios.get(URL_BACKEND)
 };
 
+const logoutAPI = () => {
+    // const accessToken = localStorage.getItem("access_token");
+    const URL_BACKEND = "/api/v1/auth/logout";
+    return axios.post(URL_BACKEND)
+};
+
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
     handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI,
-    getAccountAPI
+    getAccountAPI,logoutAPI
 
 }
