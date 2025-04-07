@@ -150,9 +150,22 @@ const logoutAPI = () => {
     return axios.post(URL_BACKEND)
 };
 
+const fetchAllBookAPI = (current, pageSize) => {
+    const accessToken = localStorage.getItem("access_token");
+    const URL_BACKEND = `/api/v1/book?current=${current}&pageSize=${pageSize}`;
+
+    
+    return axios.get(URL_BACKEND, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
     handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI,
-    getAccountAPI,logoutAPI
+    getAccountAPI,logoutAPI,fetchAllBookAPI
 
 }
