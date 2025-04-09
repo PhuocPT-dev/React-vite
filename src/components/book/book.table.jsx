@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { fetchAllBookAPI } from "../../service/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import BookDetail from "./book.detail";
+import CreateBookControl from "./create.book.control";
+
 
 
 const BookTable = () => {
@@ -14,6 +16,9 @@ const BookTable = () => {
     // xem chi tiet book
     const [dataDetail, setDataDetail] = useState(null);
     const [isDetailOpen, setIsDetailOpen] = useState(false);
+
+    //video 107 create book
+    const [isCreateOpen, setIsCreateOpen] = useState(false)
 
 
     useEffect(() => {
@@ -143,7 +148,8 @@ const BookTable = () => {
                 justifyContent: "space-between"
             }}>
                 <h3>Table Book</h3>
-                <Button type="primary">Create Book</Button>
+                <Button type="primary" onClick={() => setIsCreateOpen(true)}>Create Book</Button>
+
 
             </div>
             <Table columns={columns}
@@ -164,6 +170,11 @@ const BookTable = () => {
                 setDataDetail={setDataDetail}
                 isDetailOpen={isDetailOpen}
                 setIsDetailOpen={setIsDetailOpen}
+            />
+            <CreateBookControl
+                isCreateOpen={isCreateOpen}
+                setIsCreateOpen={setIsCreateOpen}
+                loadBook={loadBook}
             />
         </>
     )
