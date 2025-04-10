@@ -5,6 +5,7 @@ import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import BookDetail from "./book.detail";
 import CreateBookControl from "./create.book.control";
 import CreateBookUnControl from "./create.book.uncontrol";
+import UpdateBookControl from "./update.book.control";
 
 
 
@@ -20,6 +21,11 @@ const BookTable = () => {
 
     //video 107 create book
     const [isCreateOpen, setIsCreateOpen] = useState(false)
+
+    // video 109
+    const [dataUpdate, setDataUpdate] = useState(null);
+    const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
+
 
 
     useEffect(() => {
@@ -125,8 +131,8 @@ const BookTable = () => {
                         }}
                         style={{ cursor: "pointer", color: "orange" }} />
                     <Popconfirm
-                        title="Xóa người dùng"
-                        description="Bạn chắc chắn xóa user này?"
+                        title="Xóa book"
+                        description="Bạn chắc chắn xóa book này?"
                         onConfirm={() => handleDeleteBook(record._id)}
                         okText="Yes"
                         cancelText="No"
@@ -183,6 +189,15 @@ const BookTable = () => {
             <CreateBookUnControl
                 isCreateOpen={isCreateOpen}
                 setIsCreateOpen={setIsCreateOpen}
+                loadBook={loadBook}
+            />
+
+            {/* VIDEO 109 */}
+            <UpdateBookControl
+                dataUpdate = {dataUpdate}
+                setDataUpdate = {setDataUpdate}
+                isModalUpdateOpen = {isModalUpdateOpen}
+                setIsModalUpdateOpen = {setIsModalUpdateOpen}
                 loadBook={loadBook}
             />
         </>

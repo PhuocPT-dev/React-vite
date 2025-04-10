@@ -186,10 +186,34 @@ const createBookAPI = (thumbnail, mainText, author, price, quantity, category, s
     });
 };
 
+const updateBookAPI = (_id, thumbnail, mainText, author, price, quantity, category, slider, sold) => {
+    const accessToken = localStorage.getItem("access_token");
+    const URL_BACKEND = `/api/v1/book/${_id}`;
+
+    const data = {
+        _id: _id,
+        thumbnail: thumbnail,
+        mainText: mainText,
+        author: author,
+        price: price,
+        quantity: quantity,
+        category: category,
+        slider: slider,    // ✅ bổ sung
+        sold: sold   
+    };
+
+    return axios.put(URL_BACKEND, data, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
     handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI,
-    getAccountAPI,logoutAPI,fetchAllBookAPI, createBookAPI
+    getAccountAPI,logoutAPI,fetchAllBookAPI, createBookAPI, updateBookAPI
 
 }
