@@ -210,10 +210,22 @@ const updateBookAPI = (_id, thumbnail, mainText, author, price, quantity, catego
     })
 }
 
+const deleteBookAPI = (id) => {
+    const accessToken = localStorage.getItem("access_token");
+    const URL_BACKEND = `/api/v1/book/${id}`;
+
+    return axios.delete(URL_BACKEND, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json"
+        }
+    })
+}
+
 
 export {
     createUserAPI, updateUserAPI, fetchAllUserAPI, deleteUserAPI,
     handleUploadFile, updateUserAvatarAPI, registerUserAPI,loginAPI,
-    getAccountAPI,logoutAPI,fetchAllBookAPI, createBookAPI, updateBookAPI
+    getAccountAPI,logoutAPI,fetchAllBookAPI, createBookAPI, updateBookAPI,deleteBookAPI
 
 }
