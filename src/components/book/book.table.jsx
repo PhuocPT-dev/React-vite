@@ -4,12 +4,13 @@ import { fetchAllBookAPI } from "../../service/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import BookDetail from "./book.detail";
 import CreateBookControl from "./create.book.control";
+import CreateBookUnControl from "./create.book.uncontrol";
 
 
 
 const BookTable = () => {
 
-    const [dataBook, setDataBook] = useState([]);
+    const [dataBook, setDataBook] = useState([]); 
     const [current, setCurrent] = useState(1);
     const [pageSize, setPageSize] = useState(5);
     const [total, setTotal] = useState(0);
@@ -171,7 +172,15 @@ const BookTable = () => {
                 isDetailOpen={isDetailOpen}
                 setIsDetailOpen={setIsDetailOpen}
             />
-            <CreateBookControl
+
+            {/*<CreateBookControl 
+                isCreateOpen={isCreateOpen}
+                setIsCreateOpen={setIsCreateOpen}
+                loadBook={loadBook}
+            />*/}
+            {/* VIDEO 107 */}
+            {/* video 108 */}
+            <CreateBookUnControl
                 isCreateOpen={isCreateOpen}
                 setIsCreateOpen={setIsCreateOpen}
                 loadBook={loadBook}
