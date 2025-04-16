@@ -85,6 +85,9 @@ const CreateBookUnControl = (props) => {
             title="Create Book (uncontrolled component)"
             open={isCreateOpen}
             onOk={() => form.submit()}
+            // okButtonProps={{
+            //     loading:true
+            // }}
             onCancel={() => resetAndCloseModal()}
             maskClosable={false}
             okText={"CREATE"}

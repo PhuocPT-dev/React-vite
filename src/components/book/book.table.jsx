@@ -1,5 +1,5 @@
 import { Button, notification, Popconfirm, Table } from "antd";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { deleteBookAPI, fetchAllBookAPI } from "../../service/api.service";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import BookDetail from "./book.detail";
@@ -27,14 +27,12 @@ const BookTable = () => {
     const [dataUpdate, setDataUpdate] = useState(null);
     const [isModalUpdateOpen, setIsModalUpdateOpen] = useState(false);
 
+    //video 113
 
+    const [loadingTable, setLoadingTable] = useState(false)
 
-    useEffect(() => {
-        loadBook();
-    }, [current, pageSize]);
-
-
-    const loadBook = async () => {
+    const loadBook = useCallback(async () => {
+        setLoadingTable(true)
         const res = await fetchAllBookAPI(current, pageSize)
         if (res.data) {
             setDataBook(res.data.result);
@@ -43,7 +41,12 @@ const BookTable = () => {
             setTotal(res.data.meta.total)
 
         }
-    }
+        setLoadingTable(false)
+    }, [current, pageSize])
+
+    useEffect(() => {
+        loadBook();
+    }, [current, pageSize]);
 
     const handleDeleteBook = async (id) => {
         const res = await deleteBookAPI(id);
@@ -184,6 +187,7 @@ const BookTable = () => {
                         showTotal: (total, range) => { return (<div> {range[0]}-{range[1]} trên {total} rows</div>) }
                     }}
                 onChange={onChange}
+                loading={loadingTable}
             />
             <BookDetail
                 dataDetail={dataDetail}
