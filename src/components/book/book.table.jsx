@@ -32,12 +32,14 @@ const BookTable = () => {
     const [loadingTable, setLoadingTable] = useState(false)
 
     const loadBook = useCallback(async () => {
+        console.log(">>> run me");
+        
         setLoadingTable(true)
         const res = await fetchAllBookAPI(current, pageSize)
         if (res.data) {
             setDataBook(res.data.result);
-            setCurrent(res.data.meta.current);
-            setPageSize(res.data.meta.pageSize);
+            // setCurrent(res.data.meta.current);
+            // setPageSize(res.data.meta.pageSize);
             setTotal(res.data.meta.total)
 
         }
